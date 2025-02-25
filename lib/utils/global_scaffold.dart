@@ -5,6 +5,9 @@ class GlobalScaffold extends StatelessWidget {
 
   const GlobalScaffold({super.key, required this.child});
 
+
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,9 +18,30 @@ class GlobalScaffold extends StatelessWidget {
             color: Colors.white
           ),
         ),
-        backgroundColor: Colors.black,
       ),      
       body: child,
+      bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) => print(value),
+        backgroundColor: Colors.green,
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white,
+        items: [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home, ),
+            label: 'Home'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.add_business_outlined),
+            label: 'Add Product'
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.list_rounded),
+            label: 'List Products'
+          ),
+        ],
+      )
     );
+    
   }
 }

@@ -6,6 +6,7 @@ import 'package:flutter_faculdade/app/screens/addProdutos_screen.dart';
 import 'package:flutter_faculdade/app/screens/home_screen.dart';
 import 'package:flutter_faculdade/app/screens/listProdutos.screen.dart';
 import 'package:flutter_faculdade/app/screens/login_screen.dart';
+import 'package:flutter_faculdade/utils/widgets/global_scaffold.dart';
 import 'package:get/get.dart';
 
 class AppPages {
@@ -15,14 +16,22 @@ class AppPages {
       page: () => LoginScreen(),
     ),
     GetPage(
+      name: AppRoutes.globalScaffold,
+      page: () => GlobalScaffold(),
+      binding: BindingsBuilder(() {
+        Get.put(NavigationController(), permanent: true);
+        Get.lazyPut(() => AddProdutosController(), fenix: true);
+        Get.lazyPut(() => ListprodutosController(), fenix: true);
+      },),
+    ),
+    GetPage(
       name: AppRoutes.home,
       page: () => HomeScreen(),
-      // binding: BindingsBuilder(() => Get.lazyPut(() => NavigationController(), fenix: true)),
     ),
     GetPage(
       name: AppRoutes.addProduto,
       page: () => AddprodutosScreen(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => AddprodutosController()))
+      binding: BindingsBuilder(() => Get.lazyPut(() => AddProdutosController()))
     ),
     GetPage(
       name: AppRoutes.listProdutos,

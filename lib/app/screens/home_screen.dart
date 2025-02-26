@@ -6,18 +6,16 @@ class HomeScreen extends StatelessWidget {
   
   @override
   Widget build(Object context) {
-    return GlobalScaffold(
-      child: Column(
-        children: [
-          Text(
-            'TESSSSSTEEEEEE',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.black
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          'Teste 1',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black
+          ),
+        )
+      ],
     );
   }
   

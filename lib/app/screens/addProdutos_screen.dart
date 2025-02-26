@@ -7,23 +7,20 @@ class AddprodutosScreen extends StatelessWidget {
 
   AddprodutosScreen({super.key});
 
-  final AddprodutosController inventarioController =
-      Get.find<AddprodutosController>();
+  final AddProdutosController controller = Get.find<AddProdutosController>();
 
   @override
   Widget build(BuildContext context) {
-    return GlobalScaffold(
-      child:  Column(
-        children: [
-          Text(
-            'TESSSSSTEEEEEE',
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.black
-            ),
-          )
-        ],
-      ),
+    return Column(
+      children: [
+        Text(
+          'TESSSSSTEEEEEE',
+          style: TextStyle(
+            fontSize: 20,
+            color: Colors.black
+          ),
+        )
+      ],
     );
   }
   

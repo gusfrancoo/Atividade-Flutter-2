@@ -22,7 +22,7 @@ class LoginController extends GetxController {
       ));
     }
 
-    Get.offNamed(AppRoutes.home);
+    Get.offNamed(AppRoutes.globalScaffold);
   }
 
 }

@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_faculdade/app/controllers/navigation_controller.dart';
+import 'package:flutter_faculdade/app/screens/addProdutos_screen.dart';
+import 'package:flutter_faculdade/app/screens/home_screen.dart';
+import 'package:flutter_faculdade/app/screens/listProdutos.screen.dart';
 import 'package:get/get.dart';
 
 import '../../app/routes/app_routes.dart';
 
 class GlobalScaffold extends StatelessWidget {
-  final Widget child;
+  // final Widget child;
 
-  GlobalScaffold({super.key, required this.child});
+  GlobalScaffold({super.key});
   final NavigationController _controller = Get.find<NavigationController>();
-
+    final List<Widget> screens = [
+      HomeScreen(),
+      AddprodutosScreen(),
+      ListProdutosScreen(),
+    ];
 
   @override
   Widget build(BuildContext context) {
@@ -26,96 +33,50 @@ class GlobalScaffold extends StatelessWidget {
                 ),
               ),
             ),      
-            body: child,
-            bottomNavigationBar: BottomNavigationBar(
-
-              onTap: (value) => _controller.changePage(value),
-              backgroundColor: Colors.green,
-              selectedItemColor: Colors.white,
-              unselectedItemColor: Colors.white,
-              items: [
-                BottomNavigationBarItem(
-
-                  activeIcon: 
-                    Stack(
-                      clipBehavior: Clip.none, // Garante que a linha possa ultrapassar o item
-                      alignment: Alignment.center,
-                      children: [
-                        if(_controller.selectedIndex.value == 0) ... [
-                          Positioned(
-                            width: 140,
-                            top: -6,
-                            child: Container(
-                              height: 4,
-                              // width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.green[800],
-                                border: Border(top: BorderSide(color: Colors.green.shade800, width: 2))
-                              ),
-                            ),
-                          ),
-                        ],
-                        Icon(Icons.home, color: Colors.white),
-                      ],
-                    ),
-                  icon: Icon(Icons.home_outlined,),
-                  label: 'Home'
+            body:
+            AnimatedSwitcher(
+              duration: const Duration(milliseconds: 200), // Tempo de animação da troca de telas
+              transitionBuilder: (Widget child, Animation<double> animation) {
+                return FadeTransition(
+                  opacity: animation,
+                  child: child,
+                );
+              },
+              child: IndexedStack(
+                key: ValueKey<int>(_controller.selectedIndex.value), // Permite a transição suave ao mudar a tela
+                index: _controller.selectedIndex.value,
+                children: screens, // Aqui as telas ficam carregadas
+              ),
+            ),
+            bottomNavigationBar: 
+              BottomNavigationBar(
+                currentIndex: _controller.selectedIndex.value,
+                onTap: _controller.changePage,
+                backgroundColor: Colors.green,
+                selectedItemColor: Colors.white,
+                unselectedItemColor: Colors.white70,
+                elevation: 0, // Remove sombra se necessário
+                items: const [
                   
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: 
-                    Stack(
-                      clipBehavior: Clip.none, // Garante que a linha possa ultrapassar o item
-                      alignment: Alignment.center,
-                      children: [
-                        if(_controller.selectedIndex.value == 1) ... [
-                          Positioned(
-                            width: 140,
-                            top: -6,
-                            child: Container(
-                              height: 4,
-                              // width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.green[800],
-                                border: Border(top: BorderSide(color: Colors.green.shade800, width: 2))
-                              ),
-                            ),
-                          ),
-                        ],
-                        Icon(Icons.add_business_rounded, color: Colors.white),
-                      ],
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.home_outlined),
+                    activeIcon: Icon(Icons.home),
+                    label: 'Home',
                   ),
-                  icon: Icon(Icons.add_business_outlined),
-                  label: 'Add Product'
-                ),
-                BottomNavigationBarItem(
-                  activeIcon: 
-                    Stack(
-                      clipBehavior: Clip.none, // Garante que a linha possa ultrapassar o item
-                      alignment: Alignment.center,
-                      children: [
-                        if(_controller.selectedIndex.value == 2) ... [
-                          Positioned(
-                            width: 140,
-                            top: -6,
-                            child: Container(
-                              height: 4,
-                              // width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.green[800],
-                                border: Border(top: BorderSide(color: Colors.green.shade800, width: 2))
-                              ),
-                            ),
-                          ),
-                        ],
-                        Icon(Icons.list_rounded, color: Colors.white),
-                      ],
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.add_business_outlined),
+                    activeIcon: Icon(Icons.add_business_rounded),
+                    label: 'Add Product',
                   ),
-                  icon: Icon(Icons.format_list_bulleted_rounded),
-                  label: 'List Products'
-                ),
-              ],
-            )
+                  BottomNavigationBarItem(
+                    icon: Icon(Icons.format_list_bulleted_rounded),
+                    activeIcon: Icon(Icons.list_rounded),
+                    label: 'List Products',
+                  ),
+                ],
+              ),
+
+
           );
       }
     );

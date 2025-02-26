@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_faculdade/app/routes/app_pages.dart';
 import 'package:flutter_faculdade/app/routes/app_routes.dart';
 import 'package:flutter_faculdade/app/screens/login_screen.dart';
+import 'package:flutter_faculdade/utils/app_bindings.dart';
 import 'package:get/get.dart';
 
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       ),
       getPages: AppPages.routes,
       initialRoute: AppRoutes.login,
+      initialBinding: AppBindings(), 
     );
   }
 }

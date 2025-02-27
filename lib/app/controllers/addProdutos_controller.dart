@@ -20,8 +20,6 @@ class AddProdutosController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    print(box.read('products'));
-    print(products);
   }
 
   Future<void> addProducts() async {

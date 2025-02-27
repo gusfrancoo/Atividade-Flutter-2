@@ -8,7 +8,8 @@ class LoginController extends GetxController {
   
   final TextEditingController username = TextEditingController();
   final TextEditingController password = TextEditingController();  
-  
+
+  //pode passar qualquer coisa pro login q vai funcionar
   Future<void> login() async {
     if (username.text.isEmpty || password.text.isEmpty) {
       Get.showSnackbar( const GetSnackBar(
@@ -20,6 +21,7 @@ class LoginController extends GetxController {
         borderRadius: 8,
         icon:  Icon(Icons.warning, color: Colors.white),
       ));
+      return;
     }
 
     Get.offNamed(AppRoutes.globalScaffold);

@@ -22,34 +22,59 @@ class ListProdutosScreen extends StatelessWidget {
         Column(
           children: [
             controller.products.length > 0 ?
-              SingleChildScrollView(
-                child: SizedBox(
-                  height: 50,
-                  child: 
+              Expanded(
+                child: ListView.builder(
+                  itemCount: controller.products.length,
                   
-                    Card(
-                      color: Colors.white70,
-                      child: 
-                      ListView.builder(
-                        itemCount: controller.products.length,
-                        
-                        itemBuilder: (context, index) {
-                        final product = controller.products[index];
-                          return ListTile(
-                              // leading: Image.network(product.imageUrl,
-                              //     width: 50, height: 50, fit: BoxFit.cover),
-                              title: Text(product.name),
-                              subtitle: Text("R\$ ${product.price.toStringAsFixed(2)}"),
-                              trailing: IconButton(
-                                icon: Icon(Icons.delete, color: Colors.red),
-                                onPressed: () =>
-                                    controller.products.removeAt(index),
-                              ),
-                            );
+                  itemBuilder: (context, index) {
+                  final product = controller.products[index];
+                  
+                    return Card(
+                      color: Colors.white,
+                      shadowColor: Colors.black,
+                      
+                      child: ListTile(
+                          leading: 
+                            product.imageUrl.isNotEmpty ? 
+                            Image.network(
+                              product.imageUrl,
+                              width: 50, 
+                              height: 50, 
+                              fit: BoxFit.cover,
+                              loadingBuilder: (context, child, progress) {
+                              if (progress == null) return child;
+                                return const CircularProgressIndicator();
+                              },
+                              errorBuilder: (context, error, stackTrace) {
+                                return const Icon(Icons.error);
+                              },
+                            )
+                            : Container(),
+                          onTap: () {
+                            
                           },
-                      ),
-                    ),
-                  ),
+                          
+                          title: Text(
+                            product.name,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold
+                            ),
+                          ),
+                          subtitle: Text(
+                            "R\$ ${product.price.toStringAsFixed(2)}",
+                            style: TextStyle(
+                              fontSize: 14
+                            ),
+                          ),
+                          trailing: IconButton(
+                            icon: Icon(Icons.delete, color: Colors.red),
+                            onPressed: () =>
+                                controller.products.removeAt(index),
+                          ),
+                        ),
+                    );
+                    },
+                ),
               ) 
             : 
               Expanded(
@@ -70,7 +95,7 @@ class ListProdutosScreen extends StatelessWidget {
                     ],
                   ),
                 )
-              )
+              ),
           ],
         );
     },);

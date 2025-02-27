@@ -4,11 +4,12 @@ import 'package:flutter_faculdade/app/screens/addProdutos_screen.dart';
 import 'package:flutter_faculdade/app/screens/home_screen.dart';
 import 'package:flutter_faculdade/app/screens/listProdutos.screen.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 
 class NavigationController extends GetxController {
   final RxInt selectedIndex = 0.obs;
-  final RxString appBarTitle = ''.obs;
-
+  final RxString appBarTitle = 'Home'.obs;
+  // final box = GetStorage(); // Instância do GetStorage
 
 
 

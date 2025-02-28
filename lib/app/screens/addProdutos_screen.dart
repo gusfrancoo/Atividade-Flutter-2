@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_faculdade/app/controllers/addProdutos_controller.dart';
-import 'package:flutter_faculdade/utils/widgets/global_scaffold.dart';
 import 'package:get/get.dart';
 
 class AddprodutosScreen extends StatelessWidget {

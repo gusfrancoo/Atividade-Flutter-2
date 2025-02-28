@@ -1,5 +1,4 @@
 import 'package:flutter_faculdade/app/controllers/login_controller.dart';
-import 'package:flutter_faculdade/app/routes/app_routes.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 
@@ -37,6 +36,7 @@ class LoginScreen extends StatelessWidget {
                   const SizedBox(height: 15,),
                   TextField(
                     controller: controller.password,
+                    obscureText: true,
                     decoration: InputDecoration(
                       labelText: 'Senha',
                       border: OutlineInputBorder(

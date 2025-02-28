@@ -17,10 +17,6 @@ class AddProdutosController extends GetxController {
   final RxList<Product> products = <Product>[].obs;
   final box = GetStorage(); // Instância do GetStorage
   
-  @override
-  void onInit() {
-    super.onInit();
-  }
 
   Future<void> addProducts() async {
 

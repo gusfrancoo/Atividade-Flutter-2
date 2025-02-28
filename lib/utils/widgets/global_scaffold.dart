@@ -5,7 +5,6 @@ import 'package:flutter_faculdade/app/screens/home_screen.dart';
 import 'package:flutter_faculdade/app/screens/listProdutos.screen.dart';
 import 'package:get/get.dart';
 
-import '../../app/routes/app_routes.dart';
 
 class GlobalScaffold extends StatelessWidget {
   // final Widget child;

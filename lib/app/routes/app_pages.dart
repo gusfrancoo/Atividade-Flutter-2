@@ -1,8 +1,8 @@
-import 'package:flutter_faculdade/app/controllers/addProdutos_controller.dart';
+import 'package:flutter_faculdade/app/controllers/calculaCep_controller.dart';
 import 'package:flutter_faculdade/app/controllers/navigation_controller.dart';
 import 'package:flutter_faculdade/app/controllers/listProdutos_controller.dart';
 import 'package:flutter_faculdade/app/routes/app_routes.dart';
-import 'package:flutter_faculdade/app/screens/addProdutos_screen.dart';
+import 'package:flutter_faculdade/app/screens/calculaCep_screen.dart';
 import 'package:flutter_faculdade/app/screens/home_screen.dart';
 import 'package:flutter_faculdade/app/screens/listProdutos.screen.dart';
 import 'package:flutter_faculdade/app/screens/login_screen.dart';
@@ -20,7 +20,7 @@ class AppPages {
       page: () => GlobalScaffold(),
       binding: BindingsBuilder(() {
         Get.put(NavigationController(), permanent: true);
-        Get.lazyPut(() => AddProdutosController(), fenix: true);
+        Get.lazyPut(() => CalculaCepController(), fenix: true);
         Get.lazyPut(() => ListprodutosController(), fenix: true);
       },),
     ),
@@ -30,13 +30,13 @@ class AppPages {
     ),
     GetPage(
       name: AppRoutes.addProduto,
-      page: () => AddprodutosScreen(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => AddProdutosController()))
+      page: () => CalculacepScreen(),
+      binding: BindingsBuilder(() => Get.lazyPut(() => CalculaCepController()))
     ),
-    GetPage(
-      name: AppRoutes.listProdutos,
-      page: () => ListProdutosScreen(),
-      binding: BindingsBuilder(() => Get.lazyPut(() => ListprodutosController()))
-    ),
+    // GetPage(
+    //   name: AppRoutes.listProdutos,
+    //   page: () => ListProdutosScreen(),
+    //   binding: BindingsBuilder(() => Get.lazyPut(() => ListprodutosController()))
+    // ),
   ];
 }

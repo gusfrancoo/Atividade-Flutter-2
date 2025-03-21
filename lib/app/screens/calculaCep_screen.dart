@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_faculdade/app/controllers/addProdutos_controller.dart';
+import 'package:flutter_faculdade/app/controllers/calculaCep_controller.dart';
 import 'package:get/get.dart';
 
-class AddprodutosScreen extends StatelessWidget {
+class CalculacepScreen extends StatelessWidget {
 
-  AddprodutosScreen({super.key});
+  CalculacepScreen({super.key});
 
-  final AddProdutosController controller = Get.find<AddProdutosController>();
+  final CalculaCepController controller = Get.find<CalculaCepController>();
 
   @override
   Widget build(BuildContext context) {
@@ -24,14 +24,14 @@ class AddprodutosScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 45,
                   child: TextField(
-                    controller: controller.nomeProd,
+                    controller: controller.cepOrigem,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
                       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green, width: 1)),
                       labelStyle: TextStyle(
                         color: Colors.black
                       ),
-                      labelText: 'Nome Produto',
+                      labelText: 'CEP origem',
                     ),
                   ),
                 ),
@@ -40,7 +40,7 @@ class AddprodutosScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 45,
                   child: TextField(
-                    controller: controller.price,
+                    controller: controller.cepDestino,
                     keyboardType: TextInputType.number,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
@@ -48,7 +48,7 @@ class AddprodutosScreen extends StatelessWidget {
                       labelStyle: TextStyle(
                         color: Colors.black
                       ),
-                      labelText: 'Preço',
+                      labelText: 'Cep destino',
                     ),
                   ),
                 ),
@@ -57,7 +57,7 @@ class AddprodutosScreen extends StatelessWidget {
                   width: double.infinity,
                   height: 45,
                   child: TextField(
-                    controller: controller.desc,
+                    controller: controller.peso,
                     
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
@@ -65,7 +65,7 @@ class AddprodutosScreen extends StatelessWidget {
                       labelStyle: TextStyle(
                         color: Colors.black
                       ),
-                      labelText: 'Decrição',
+                      labelText: 'Peso',
                     ),
                   ),
                 ),
@@ -75,15 +75,48 @@ class AddprodutosScreen extends StatelessWidget {
                   height: 45,
                   
                   child: TextField(
-                    controller: controller.urlImg,
-                    keyboardType: TextInputType.url,
+                    controller: controller.comprimento,
                     decoration: InputDecoration(
                       enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
                       focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green, width: 1)),
                       labelStyle: TextStyle(
                         color: Colors.black
                       ),
-                      labelText: 'Url Imagem',
+                      labelText: 'Comprimento',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15,),
+                SizedBox(
+                  width: double.infinity,
+                  height: 45,
+                  
+                  child: TextField(
+                    controller: controller.largura,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green, width: 1)),
+                      labelStyle: TextStyle(
+                        color: Colors.black
+                      ),
+                      labelText: 'Largura',
+                    ),
+                  ),
+                ),
+                SizedBox(height: 15,),
+                SizedBox(
+                  width: double.infinity,
+                  height: 45,
+                  
+                  child: TextField(
+                    controller: controller.altura,
+                    decoration: InputDecoration(
+                      enabledBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green.shade100)),
+                      focusedBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.green, width: 1)),
+                      labelStyle: TextStyle(
+                        color: Colors.black
+                      ),
+                      labelText: 'Altura',
                     ),
                   ),
                 ),
@@ -93,7 +126,7 @@ class AddprodutosScreen extends StatelessWidget {
                     Expanded(
                       child: ElevatedButton(
                         onPressed: () {
-                          controller.addProducts();
+                          controller.calcularCep();
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.green.shade800, // Cor do botão
@@ -103,7 +136,7 @@ class AddprodutosScreen extends StatelessWidget {
                           elevation: 5, // Sombra para efeito 3D
                         ),
                         child: Text(
-                          'Adicionar Produto',
+                          'Calcular CEP',
                           style: const TextStyle(
                             color: Colors.white, // Cor do texto
                             fontSize: 16,

@@ -67,11 +67,11 @@ class GlobalScaffold extends StatelessWidget {
                     activeIcon: Icon(Icons.home),
                     label: 'Home',
                   ),
-                  BottomNavigationBarItem(
-                    icon: Icon(Icons.format_list_bulleted_rounded),
-                    activeIcon: Icon(Icons.list_rounded),
-                    label: '',
-                  ),
+                  // BottomNavigationBarItem(
+                  //   icon: Icon(Icons.format_list_bulleted_rounded),
+                  //   activeIcon: Icon(Icons.list_rounded),
+                  //   label: '',
+                  // ),
                 ],
               ),
 

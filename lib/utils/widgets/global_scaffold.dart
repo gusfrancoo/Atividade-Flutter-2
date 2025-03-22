@@ -12,8 +12,8 @@ class GlobalScaffold extends StatelessWidget {
   GlobalScaffold({super.key});
   final NavigationController _controller = Get.find<NavigationController>();
     final List<Widget> screens = [
-      HomeScreen(),
       CalculacepScreen(),
+      HomeScreen(),
       // ListProdutosScreen(),
     ];
 
@@ -58,19 +58,19 @@ class GlobalScaffold extends StatelessWidget {
                 items: const [
                   
                   BottomNavigationBarItem(
+                    icon: Icon(Icons.add_business_outlined),
+                    activeIcon: Icon(Icons.add_business_rounded),
+                    label: 'Calcular frete',
+                  ),
+                  BottomNavigationBarItem(
                     icon: Icon(Icons.home_outlined),
                     activeIcon: Icon(Icons.home),
                     label: 'Home',
                   ),
                   BottomNavigationBarItem(
-                    icon: Icon(Icons.add_business_outlined),
-                    activeIcon: Icon(Icons.add_business_rounded),
-                    label: 'Add Product',
-                  ),
-                  BottomNavigationBarItem(
                     icon: Icon(Icons.format_list_bulleted_rounded),
                     activeIcon: Icon(Icons.list_rounded),
-                    label: 'List Products',
+                    label: '',
                   ),
                 ],
               ),

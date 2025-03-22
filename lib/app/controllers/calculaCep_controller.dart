@@ -94,9 +94,12 @@ class CalculaCepController extends GetxController {
       "nvlAltura": nvlAlturaValue
     };
     print(params);
-    final dio = Dio();
+
+    //CRIANDO INSTÂNCIA DA BIBLIOTECA QUE REALIZA AS REQUISIÇÕES HTTP
+    // final dio = Dio();
 
     try {
+      
       //REQUISIÇÃO EM API MOCK TESTE (PODE NAO FUNCIONAR), UTILIZAREI FLUXO DE TESTE PARA REPRESENTAR UMA UTILIZAÇÃO DE API EXTERNA 
       // final response = await dio.post(
       //   "https://67de0d95471aaaa7428325b6.mockapi.io/api/aula_poo/calcular-frete/frete",
